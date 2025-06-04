@@ -75,17 +75,22 @@
 
   <div class="schedule-container">
     <h2>Schedule a Meeting</h2>
-    <form id="meetingForm">
-      <input type="text" placeholder="Your Full Name" required />
-      <input type="email" placeholder="Your Email Address" required />
-      <input type="tel" placeholder="Your Phone Number" />
+    <form action="https://formspree.io/f/mnnvnddb" method="POST">
+      <input type="text" name="full-name" placeholder="Your Full Name" required />
+      <input type="email" name="email" placeholder="Your Email Address" required />
+      <input type="tel" name="phone" placeholder="Your Phone Number" />
 
       <label for="meeting-time">Preferred Date & Time</label>
-      <input type="text" id="meeting-time" name="meeting-time" placeholder="Pick a date & time" required />
-      <textarea placeholder="Anything else you’d like to add? (Optional)" rows="4"></textarea>
+      <input type="text" name="preferred-time" id="meeting-time" placeholder="Pick a date & time" required />
+
+      <textarea name="notes" placeholder="Anything else you’d like to add? (Optional)" rows="4"></textarea>
+
+      <!-- Optional: redirect to a thank-you page -->
+      <input type="hidden" name="_redirect" value="https://benh0613.github.io/Little_Yellow_Bee/thank-you.html">
+
       <button type="submit">Submit Request</button>
-      <p id="confirmation">✅ Your meeting request has been received!</p>
     </form>
+
 
   </div>
 
