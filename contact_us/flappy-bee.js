@@ -30,7 +30,6 @@
 </head>
 <body>
 
-  <!-- ✅ NAVIGATION BAR -->
   <nav class="navbar">
     <div class="logo">
       <img src="../bee-logo.png" alt="Bee Logo">
@@ -43,28 +42,23 @@
     </ul>
   </nav>
 
-  <!-- ✅ PAGE TITLE -->
   <header>
     <h1>Contact Us</h1>
   </header>
 
-  <!-- ✅ MAIN CONTENT -->
   <main>
     <section>
       <h2>Let's Connect</h2>
       <p>Email us at <strong>info@littleyellowbee.co.uk</strong> or reach us via WeChat below.</p>
     </section>
 
-    <!-- 🎮 BEE GAME AREA -->
     <canvas id="flappyBee" width="400" height="500"></canvas>
   </main>
 
-  <!-- ✅ FOOTER -->
   <footer>
     <p>&copy; 2025 Little Yellow Bee Tutoring. All rights reserved.</p>
   </footer>
 
-  <!-- 🧠 GAME SCRIPT -->
   <script src="flappy-bee.js"></script>
 </body>
 </html>
