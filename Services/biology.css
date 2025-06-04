@@ -60,4 +60,9 @@ form label {
   font-weight: bold;
   margin-top: 0.5rem;
 }
+.flatpickr-calendar {
+  font-family: 'Segoe UI', sans-serif;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
 
