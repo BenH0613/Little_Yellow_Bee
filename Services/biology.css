@@ -56,3 +56,8 @@
 .tutor-actions button:hover {
   background-color: #dfa800;
 }
+form label {
+  font-weight: bold;
+  margin-top: 0.5rem;
+}
+
