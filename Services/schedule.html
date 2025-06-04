@@ -78,8 +78,7 @@
       <input type="tel" placeholder="Your Phone Number" />
 
       <label for="meeting-time">Preferred Date & Time</label>
-      <input type="datetime-local" id="meeting-time" name="meeting-time" required />
-
+      <input type="text" id="meeting-time" name="meeting-time" placeholder="Pick a date & time" required />
       <textarea placeholder="Anything else you’d like to add? (Optional)" rows="4"></textarea>
       <button type="submit">Submit Request</button>
       <p id="confirmation">✅ Your meeting request has been received!</p>
@@ -88,14 +87,44 @@
   </div>
 
   <script>
+    // Initialize Flatpickr
+    flatpickr("#meeting-time", {
+      enableTime: true,
+      dateFormat: "Y-m-d H:i",
+      altInput: true,
+      altFormat: "F j, Y - h:i K",
+      minDate: "today"
+    });
+
+    // Handle form submission
     document.getElementById("meetingForm").addEventListener("submit", function (e) {
       e.preventDefault();
       document.getElementById("confirmation").style.display = "block";
       this.reset();
     });
   </script>
-  <!-- Flatpickr script -->
+
+
+  <!-- Flatpickr JS must come first -->
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+  <!-- Then your custom script -->
+  <script>
+    flatpickr("#meeting-time", {
+      enableTime: true,
+      dateFormat: "Y-m-d H:i",
+      altInput: true,
+      altFormat: "F j, Y - h:i K",
+      minDate: "today"
+    });
+
+    document.getElementById("meetingForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      document.getElementById("confirmation").style.display = "block";
+      this.reset();
+    });
+  </script>
+
 
 </body>
 </html>
