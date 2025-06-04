@@ -18,11 +18,13 @@
       border-radius: 12px;
     }
 
-    .logo {
-      width: 100px;
-      height: auto;
-      display: block;
-      margin: 1rem auto 0 auto;
+    .navbar .logo img {
+      height: 40px;
+    }
+
+    .navbar .logo {
+      display: flex;
+      align-items: center;
     }
   </style>
 </head>
@@ -30,7 +32,9 @@
 
   <!-- ✅ NAVIGATION BAR -->
   <nav class="navbar">
-    <div class="logo">Little Yellow Bee</div>
+    <div class="logo">
+      <img src="../bee-logo.png" alt="Bee Logo">
+    </div>
     <ul class="nav-links">
       <li><a href="../index.html">Home</a></li>
       <li><a href="../about.html">About Us</a></li>
@@ -39,19 +43,19 @@
     </ul>
   </nav>
 
-  <!-- ✅ PAGE HEADER -->
+  <!-- ✅ PAGE TITLE -->
   <header>
-    <img src="../bee-logo.png" alt="Little Yellow Bee Logo" class="logo" />
     <h1>Contact Us</h1>
   </header>
 
-  <!-- ✅ MAIN SECTION -->
+  <!-- ✅ MAIN CONTENT -->
   <main>
     <section>
       <h2>Let's Connect</h2>
       <p>Email us at <strong>info@littleyellowbee.co.uk</strong> or reach us via WeChat below.</p>
     </section>
 
+    <!-- 🎮 BEE GAME AREA -->
     <canvas id="flappyBee" width="400" height="500"></canvas>
   </main>
 
@@ -60,7 +64,7 @@
     <p>&copy; 2025 Little Yellow Bee Tutoring. All rights reserved.</p>
   </footer>
 
-  <!-- ✅ GAME SCRIPT -->
+  <!-- 🧠 GAME SCRIPT -->
   <script src="flappy-bee.js"></script>
 </body>
 </html>
