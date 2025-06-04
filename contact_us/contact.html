@@ -2,39 +2,43 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact Us - Little Yellow Bee</title>
   <link rel="stylesheet" href="../styles.css" />
   <style>
     main {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 1rem;
       text-align: center;
     }
 
-    canvas {
-      background-color: #e0f7fa;
+    .contact-section {
+      margin-top: 2rem;
+    }
+
+    .contact-info {
+      margin: 2rem 0;
+      font-size: 1.1rem;
+    }
+
+    .wechat-qr {
+      max-width: 150px;
+      margin: 1rem auto;
       display: block;
+    }
+
+    form {
       margin: 2rem auto;
-      border: 2px solid #fdd835;
-      border-radius: 12px;
-    }
-
-    .navbar .logo img {
-      height: 40px;
-    }
-
-    .navbar .logo {
-      display: flex;
-      align-items: center;
+      max-width: 400px;
     }
   </style>
 </head>
 <body>
 
-  <!-- ✅ NAVIGATION BAR -->
+  <!-- Navigation -->
   <nav class="navbar">
-    <div class="logo">
-      <img src="../bee-logo.png" alt="Bee Logo">
-    </div>
+    <div class="logo">Little Yellow Bee</div>
     <ul class="nav-links">
       <li><a href="../index.html">Home</a></li>
       <li><a href="../about.html">About Us</a></li>
@@ -43,28 +47,44 @@
     </ul>
   </nav>
 
-  <!-- ✅ PAGE TITLE -->
+  <!-- Page Heading -->
   <header>
     <h1>Contact Us</h1>
   </header>
 
-  <!-- ✅ MAIN CONTENT -->
+  <!-- Main Content -->
   <main>
-    <section>
-      <h2>Let's Connect</h2>
-      <p>Email us at <strong>info@littleyellowbee.co.uk</strong> or reach us via WeChat below.</p>
-    </section>
+    <section class="contact-section">
+      <p class="contact-info">
+        Email us at <strong>info@littleyellowbee.co.uk</strong><br/>
+        Or reach us on WeChat or WhatsApp using the QR code or links below.
+      </p>
 
-    <!-- 🎮 BEE GAME AREA -->
-    <canvas id="flappyBee" width="400" height="500"></canvas>
+      <!-- Contact Form -->
+      <form>
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+
+      <!-- Optional: QR Code -->
+      <!-- <img src="../wechat-qr.png" alt="WeChat QR Code" class="wechat-qr" /> -->
+
+      <!-- Social Links -->
+      <p>
+        Connect with us:<br/>
+        <a href="https://instagram.com" target="_blank">Instagram</a> |
+        <a href="https://wa.me/" target="_blank">WhatsApp</a> |
+        <a href="#">WeChat</a>
+      </p>
+    </section>
   </main>
 
-  <!-- ✅ FOOTER -->
+  <!-- Footer -->
   <footer>
     <p>&copy; 2025 Little Yellow Bee Tutoring. All rights reserved.</p>
   </footer>
 
-  <!-- 🧠 GAME SCRIPT -->
-  <script src="flappy-bee.js"></script>
 </body>
 </html>
