@@ -17,15 +17,35 @@
       border: 2px solid #fdd835;
       border-radius: 12px;
     }
+
+    .logo {
+      width: 100px;
+      height: auto;
+      display: block;
+      margin: 1rem auto 0 auto;
+    }
   </style>
 </head>
 <body>
+
+  <!-- ✅ NAVIGATION BAR -->
+  <nav class="navbar">
+    <div class="logo">Little Yellow Bee</div>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../about.html">About Us</a></li>
+      <li><a href="../contact_us/contact.html">Contact Us</a></li>
+      <li><a href="../index.html#services">Our Services</a></li>
+    </ul>
+  </nav>
+
+  <!-- ✅ PAGE HEADER -->
   <header>
     <img src="../bee-logo.png" alt="Little Yellow Bee Logo" class="logo" />
     <h1>Contact Us</h1>
-    <a href="../index.html">← Back to Home</a>
   </header>
 
+  <!-- ✅ MAIN SECTION -->
   <main>
     <section>
       <h2>Let's Connect</h2>
@@ -35,10 +55,12 @@
     <canvas id="flappyBee" width="400" height="500"></canvas>
   </main>
 
+  <!-- ✅ FOOTER -->
   <footer>
     <p>&copy; 2025 Little Yellow Bee Tutoring. All rights reserved.</p>
   </footer>
 
+  <!-- ✅ GAME SCRIPT -->
   <script src="flappy-bee.js"></script>
 </body>
 </html>
