@@ -1,64 +1,124 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Contact Us - Little Yellow Bee</title>
-  <link rel="stylesheet" href="../styles.css" />
-  <style>
-    main {
-      text-align: center;
+const canvas = document.getElementById("flappyBee");
+const ctx = canvas.getContext("2d");
+
+const beeImg = new Image();
+beeImg.src = "../bee-logo.png";
+
+const pipeImg = new Image();
+pipeImg.src = "pipe.png"; // Make sure 'pipe.png' is in /contact_us/
+
+let velocity = 0;
+let gravity = 0.5;
+let isGameOver = false;
+
+const bee = {
+  x: 50,
+  y: 150,
+  width: 40,
+  height: 40
+};
+
+const pipes = [];
+const pipeWidth = 50;
+const pipeGap = 120;
+let frame = 0;
+let score = 0;
+
+function drawBee() {
+  ctx.drawImage(beeImg, bee.x, bee.y, bee.width, bee.height);
+}
+
+function drawPipe(pipe) {
+  // Top pipe flipped
+  ctx.save();
+  ctx.translate(pipe.x, pipe.top);
+  ctx.scale(1, -1);
+  ctx.drawImage(pipeImg, 0, 0, pipeWidth, canvas.height);
+  ctx.restore();
+
+  // Bottom pipe
+  ctx.drawImage(pipeImg, pipe.x, pipe.bottom, pipeWidth, canvas.height);
+}
+
+function resetGame() {
+  bee.y = 150;
+  velocity = 0;
+  pipes.length = 0;
+  frame = 0;
+  score = 0;
+  isGameOver = false;
+  requestAnimationFrame(updateGame);
+}
+
+function updateGame() {
+  if (isGameOver) {
+    ctx.font = "24px Arial";
+    ctx.fillStyle = "#d32f2f";
+    ctx.textAlign = "center";
+    ctx.fillText("Game Over! Click to Restart", canvas.width / 2, canvas.height / 2);
+    return;
+  }
+
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  velocity += gravity;
+  bee.y += velocity;
+
+  if (bee.y + bee.height > canvas.height || bee.y < 0) {
+    isGameOver = true;
+  }
+
+  if (frame % 90 === 0) {
+    const topHeight = Math.random() * 200 + 50;
+    pipes.push({
+      x: canvas.width,
+      top: topHeight,
+      bottom: topHeight + pipeGap
+    });
+  }
+
+  pipes.forEach(pipe => {
+    pipe.x -= 2;
+    drawPipe(pipe);
+
+    // Collision check
+    if (
+      bee.x + bee.width > pipe.x &&
+      bee.x < pipe.x + pipeWidth &&
+      (bee.y < pipe.top || bee.y + bee.height > pipe.bottom)
+    ) {
+      isGameOver = true;
     }
 
-    canvas {
-      background-color: #e0f7fa;
-      display: block;
-      margin: 2rem auto;
-      border: 2px solid #fdd835;
-      border-radius: 12px;
+    if (pipe.x + pipeWidth === bee.x) {
+      score++;
     }
+  });
 
-    .navbar .logo img {
-      height: 40px;
-    }
+  drawBee();
 
-    .navbar .logo {
-      display: flex;
-      align-items: center;
-    }
-  </style>
-</head>
-<body>
+  ctx.font = "20px Arial";
+  ctx.fillStyle = "#333";
+  ctx.fillText("Score: " + score, 10, 30);
 
-  <nav class="navbar">
-    <div class="logo">
-      <img src="../bee-logo.png" alt="Bee Logo">
-    </div>
-    <ul class="nav-links">
-      <li><a href="../index.html">Home</a></li>
-      <li><a href="../about.html">About Us</a></li>
-      <li><a href="../contact_us/contact.html">Contact Us</a></li>
-      <li><a href="../index.html#services">Our Services</a></li>
-    </ul>
-  </nav>
+  frame++;
+  requestAnimationFrame(updateGame);
+}
 
-  <header>
-    <h1>Contact Us</h1>
-  </header>
+document.addEventListener("keydown", e => {
+  if (e.code === "Space") {
+    velocity = -7;
+  }
+});
 
-  <main>
-    <section>
-      <h2>Let's Connect</h2>
-      <p>Email us at <strong>info@littleyellowbee.co.uk</strong> or reach us via WeChat below.</p>
-    </section>
+canvas.addEventListener("click", () => {
+  if (isGameOver) {
+    resetGame();
+  } else {
+    velocity = -7;
+  }
+});
 
-    <canvas id="flappyBee" width="400" height="500"></canvas>
-  </main>
-
-  <footer>
-    <p>&copy; 2025 Little Yellow Bee Tutoring. All rights reserved.</p>
-  </footer>
-
-  <script src="flappy-bee.js"></script>
-</body>
-</html>
+beeImg.onload = () => {
+  updateGame();
+};
